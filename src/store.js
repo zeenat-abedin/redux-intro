@@ -13,8 +13,42 @@ function reducer(state = initialState, action) {
     case "loan":
       if (state.loan > 0) return state;
       return { ...state, loan: action.payload };
-
+    case "account/payloan":
+      return {
+        ...state,
+        loan: 0,
+        loanPurpose: "",
+        balance: state.balance - state.loan,
+      };
     default:
-      break;
+      return state;
   }
+}
+
+function deposit(amount) {
+  return {
+    type: "account/deposit",
+    payload: amount,
+  };
+}
+
+function withdraw(amount) {
+  return {
+    type: "account/wihdraw",
+    payload: amount,
+  };
+}
+
+function payLoan(amount) {
+  return {
+    type: "account/payloan",
+    payload: amount,
+  };
+}
+
+function requestLoan(amount) {
+  return {
+    type: "account/requestLoan",
+    payload: { amount: 1000, purpose: "Buy a car" },
+  };
 }
