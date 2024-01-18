@@ -1,3 +1,5 @@
+import { createStore } from "redux";
+
 const initialState = {
   loan: 0,
   balance: 0,
@@ -24,6 +26,8 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
+
+const store = createStore(reducer);
 
 function deposit(amount) {
   return {
@@ -52,3 +56,5 @@ function requestLoan(amount) {
     payload: { amount: 1000, purpose: "Buy a car" },
   };
 }
+
+store.dispatch(deposit(500));
