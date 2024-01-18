@@ -30,9 +30,9 @@ function reducer(state, action) {
     case "openAccount":
       return { ...state, balance: 500, isActive: true };
     case "deposit":
-      return "";
+      return { ...state, balance: state.balance + action.payload };
     case "withdraw":
-      return "";
+      return { ...state, balance: state.balance - action.payload };
     case "requestLoan":
       return "";
     case "payLoan":
