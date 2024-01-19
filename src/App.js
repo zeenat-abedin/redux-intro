@@ -43,7 +43,11 @@ function reducer(state, action) {
         balance: state.balance + action.payload,
       };
     case "payLoan":
-      return "";
+      return {
+        ...state,
+        loan: 0,
+        balance: state.balance - state.loan,
+      };
     case "closeAccount":
       return "";
     default:
