@@ -49,7 +49,8 @@ function reducer(state, action) {
         balance: state.balance - state.loan,
       };
     case "closeAccount":
-      return "";
+      if (state.loan > 0 || state.balance !== 0) return state;
+      return initialState;
     default:
       throw new Error("Unknown");
   }
