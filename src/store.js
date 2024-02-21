@@ -8,7 +8,8 @@ const initialStateAccount = {
 
 const initialStateCustomer = {
   fullName: "",
-  nationalId: ""
+  nationalId: "",
+  createdAt: ""
 };
 
 function reducer(state, action) {
