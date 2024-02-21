@@ -12,7 +12,7 @@ const initialStateCustomer = {
   createdAt: ""
 };
 
-function reducer(state, action) {
+function accountReducer(state, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -33,7 +33,7 @@ function reducer(state, action) {
   }
 }
 
-const store = createStore(reducer);
+const store = createStore(accountReducer);
 
 function deposit(amount) {
   return {
