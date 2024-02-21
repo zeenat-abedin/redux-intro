@@ -8,9 +8,10 @@ const initialStateAccount = {
 
 const initialStateCustomer = {
   fullName: "",
+  nationalId: ""
 };
 
-function reducer(state = initialState, action) {
+function reducer(state, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -62,3 +63,13 @@ function requestLoan(amount) {
 }
 
 store.dispatch(deposit(500));
+
+function createCustomer(fullName, nationalID) {
+  return {
+    type: 'customer/createCustomer', payload: {
+      fullName,
+      nationalID,
+      createdAt: new Date().toISOString()
+    }
+  }
+}
