@@ -73,3 +73,10 @@ function createCustomer(fullName, nationalID) {
     }
   }
 }
+
+function updateName(fullName) {
+  return {
+    type: 'account/updateName',
+    payload: fullName
+  }
+}
