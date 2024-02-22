@@ -1,4 +1,6 @@
 import { useReducer } from "react";
+import BalanceDisplay from "./features/accounts/BalanceDisplay";
+
 import "./index.css";
 
 const initialState = {
@@ -109,6 +111,7 @@ export default function App() {
           Close account
         </button>
       </p>
+      <BalanceDisplay/>
     </div>
   );
 }
