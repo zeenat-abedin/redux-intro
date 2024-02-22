@@ -9,20 +9,3 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-function createCustomer(fullName, nationalID) {
-  return {
-    type: 'customer/createCustomer',
-    payload: {
-      fullName,
-      nationalID,
-      createdAt: new Date().toISOString()
-    }
-  }
-}
-
-function updateName(fullName) {
-  return {
-    type: 'account/updateName',
-    payload: fullName
-  }
-}
