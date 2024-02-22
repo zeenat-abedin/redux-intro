@@ -3,8 +3,8 @@ import BalanceDisplay from "./features/accounts/BalanceDisplay";
 
 import "./index.css";
 import AccountOperations from "./features/accounts/AccountOperations";
-import Customer from "./Customer";
-import CreateCustomer from "./CreateCustomer";
+import Customer from "./features/customers/Customer";
+import CreateCustomer from "./features/customers/CreateCustomer";
 
 const initialState = {
   balance: 0,
