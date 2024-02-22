@@ -3,6 +3,8 @@ import BalanceDisplay from "./features/accounts/BalanceDisplay";
 
 import "./index.css";
 import AccountOperations from "./features/accounts/AccountOperations";
+import Customer from "./Customer";
+import CreateCustomer from "./CreateCustomer";
 
 const initialState = {
   balance: 0,
@@ -41,79 +43,20 @@ function reducer(state, action) {
   }
 }
 
-export default function App() {
+ function App() {
   const [{ balance, loan, isActive }, dispatch] = useReducer(
     reducer,
     initialState
   );
   return (
-    <div className="App">
+    <div>
       <h1> The React-Redux Bank</h1>
-      <p>Balance: {balance}</p>
-      <p>Loan: {loan}</p>
-
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "openAccount" });
-          }}
-          disabled={isActive}
-        >
-          Open account
-        </button>
-      </p>
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "deposit", payload: 150 });
-          }}
-          disabled={!isActive}
-        >
-          Deposit 150
-        </button>
-      </p>
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "withdraw", payload: 50 });
-          }}
-          disabled={!isActive}
-        >
-          Withdraw 50
-        </button>
-      </p>
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "requestLoan" });
-          }}
-          disabled={!isActive}
-        >
-          Request a loan of 5000
-        </button>
-      </p>
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "payLoan" });
-          }}
-          disabled={!isActive}
-        >
-          Pay loan
-        </button>
-      </p>
-      <p>
-        <button
-          onClick={() => {
-            dispatch({ type: "closeAccount" });
-          }}
-          disabled={!isActive}
-        >
-          Close account
-        </button>
-      </p>
+      <CreateCustomer/>
+      <Customer/>
       <AccountOperations/>
       <BalanceDisplay/>
     </div>
   );
 }
+
+export default App
