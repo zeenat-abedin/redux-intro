@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import BalanceDisplay from "./features/accounts/BalanceDisplay";
 
 import "./index.css";
+import AccountOperations from "./features/accounts/AccountOperations";
 
 const initialState = {
   balance: 0,
@@ -111,6 +112,7 @@ export default function App() {
           Close account
         </button>
       </p>
+      <AccountOperations/>
       <BalanceDisplay/>
     </div>
   );
