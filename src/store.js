@@ -11,7 +11,8 @@ const store = createStore(rootReducer);
 
 function createCustomer(fullName, nationalID) {
   return {
-    type: 'customer/createCustomer', payload: {
+    type: 'customer/createCustomer',
+    payload: {
       fullName,
       nationalID,
       createdAt: new Date().toISOString()
