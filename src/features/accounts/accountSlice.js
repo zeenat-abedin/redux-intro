@@ -39,10 +39,10 @@ export function deposit(amount, currency) {
     const converted = data.rates.USD
 
     //return action
-    return {
+    dispatch({
       type: "account/deposit",
       payload: converted
-    }
+    })
   }
 }
 
