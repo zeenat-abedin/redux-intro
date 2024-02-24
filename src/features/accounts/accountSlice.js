@@ -1,3 +1,5 @@
+import { createSlice } from '@reduxjs/toolkit'
+
 const initialStateAccount = {
   loan: 0,
   balance: 0,
@@ -5,31 +7,50 @@ const initialStateAccount = {
   isLoading: false
 };
 
-export default function accountReducer(state = initialStateAccount, action) {
-  switch (action.type) {
-    case "account/deposit":
-      return { ...state, balance: state.balance + action.payload , isLoading: false};
-    case "account/withdraw":
-      return { ...state, balance: state.balance - action.payload };
-    case "account/requestLoan":
-      if (state.loan > 0) return state;
-      return {
-        ...state, loan: action.payload.amount,
-        loanPurpose: action.payload.loanPurpose,
-      balance: state.balance + action.payload.amount};
-    case "account/payloan":
-      return {
-        ...state,
-        loan: 0,
-        loanPurpose: "",
-        balance: state.balance - state.loan,
-      };
-    case "account/convertingCurrency":
-      return {...state, isLoading: true};
-    default:
-      return state;
+const accountSlice = createSlice({
+  name: "account",
+  initialState,
+  reducers: {
+    deposit(state, action) {
+      state.balance += action.payload;
+    },
+    withdraw(state, action) {
+      state.balance -= action.payload;
+    },
+    requestLoan(state, action) {
+      if (state.loan > 0) return;
+      state.loan = action.payload.amount;
+      state.loanPurpose = action.payload.purpose;
+      state.balance = state.balance + action.payload.amount;
+    }
   }
-}
+})
+
+// export default function accountReducer(state = initialStateAccount, action) {
+//   switch (action.type) {
+//     case "account/deposit":
+//       return { ...state, balance: state.balance + action.payload , isLoading: false};
+//     case "account/withdraw":
+//       return { ...state, balance: state.balance - action.payload };
+//     case "account/requestLoan":
+//       if (state.loan > 0) return state;
+//       return {
+//         ...state, loan: action.payload.amount,
+//         loanPurpose: action.payload.loanPurpose,
+//       balance: state.balance + action.payload.amount};
+//     case "account/payloan":
+//       return {
+//         ...state,
+//         loan: 0,
+//         loanPurpose: "",
+//         balance: state.balance - state.loan,
+//       };
+//     case "account/convertingCurrency":
+//       return {...state, isLoading: true};
+//     default:
+//       return state;
+//   }
+// }
 
 export function deposit(amount, currency) {
   if (currency === 'USD') 
