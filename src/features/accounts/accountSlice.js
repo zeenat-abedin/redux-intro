@@ -34,6 +34,7 @@ const accountSlice = createSlice({
 console.log(accountSlice)
 export const {deposit,withdraw, requestLoan, payLoan } = accountSlice.actions;
 export default accountSlice.reducer;
+console.log(requestLoan(1000, "Buy car"))
 // export default function accountReducer(state = initialStateAccount, action) {
 //   switch (action.type) {
 //     case "account/deposit":
@@ -61,11 +62,11 @@ export default accountSlice.reducer;
 // }
 
 // export function deposit(amount, currency) {
-//   if (currency === 'USD') 
+//   if (currency === 'USD')
 //     return {
 //       type: "account/deposit",
 //       payload: amount,
-//     };      
+//     };
 //   return async function (dispatch, getState) {
 //     dispatch({ type: 'account/convertingCurrency' });
 
