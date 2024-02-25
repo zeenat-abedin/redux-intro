@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// const initialStateAccount = {
-//   loan: 0,
-//   balance: 0,
-//   loanPurpose: "",
-//   isLoading: false
-// };
+const initialState = {
+  loan: 0,
+  balance: 0,
+  loanPurpose: "",
+  isLoading: false
+};
 
 const accountSlice = createSlice({
   name: "account",
-  // initialState,
+  initialState,
   reducers: {
     deposit(state, action) {
       state.balance += action.payload;
@@ -18,6 +18,11 @@ const accountSlice = createSlice({
       state.balance -= action.payload;
     },
     requestLoan: {
+      prepare(amount, purpose) { 
+        return {
+          payload: {amount, purpose}
+        }
+       },
       reducer(state, action) {
         if (state.loan > 0) return;
         state.loan = action.payload.amount;
