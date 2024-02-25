@@ -46,6 +46,7 @@ console.log(accountSlice)
 export const {deposit,withdraw, requestLoan, payLoan } = accountSlice.actions;
 export default accountSlice.reducer;
 console.log(requestLoan(1000, "Buy car"))
+
 // export default function accountReducer(state = initialStateAccount, action) {
 //   switch (action.type) {
 //     case "account/deposit":
